@@ -3,26 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Women's E-commerce</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title>E-commerce for Artisan Women</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Artisan Women's E-commerce</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="about.html">About Us</a>
-        </nav>
-    </header>
+    <ul class="navbar">
+        <li><a href="#" onclick="showSection('home')">Home</a></li>
+        <li><a href="#" onclick="showSection('products')">Products</a></li>
+        <li><a href="#" onclick="showSection('about')">About Us</a></li>
+        <li class="cart-icon">
+            <a href="#" onclick="showCart()">
+                <img src="https://img.icons8.com/material-rounded/24/ffffff/shopping-cart.png" alt="Cart">
+                <span id="cart-count" class="badge">0</span>
+            </a>
+        </li>
+    </ul>
 
-    <section id="home">
-        <h2>Welcome to our Artisan Women's E-commerce Platform</h2>
-        <p>Empowering women by showcasing their handmade products.</p>
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <h1>Welcome to Artisan Women's E-commerce</h1>
+        <p>This is the home section.</p>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section" style="display:none;">
+        <h2>Our Products</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146122/saree1_cfix1u.jpg?_s=public-apps" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Description of Product 1</p>
+                <p>Price: $10.00</p>
+                <button onclick="addToCart('Product 1', 10, 'https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146122/saree1_cfix1u.jpg?_s=public-apps')">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146712/saree2_z5m8gq.jpg?_s=public-apps" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>Description of Product 2</p>
+                <p>Price: $15.00</p>
+                <button onclick="addToCart('Product 2', 15, 'https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146712/saree2_z5m8gq.jpg?_s=public-apps')">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722147302/saree3_izqz0u.jpg?_s=public-apps" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>Description of Product 3</p>
+                <p>Price: $20.00</p>
+                <button onclick="addToCart('Product 3', 20, 'https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722147302/saree3_izqz0u.jpg?_s=public-apps')">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146122/saree1_cfix1u.jpg?_s=public-apps" alt="Product 4">
+                <h3>Product 4</h3>
+                <p>Description of Product 4</p>
+                <p>Price: $25.00</p>
+                <button onclick="addToCart('Product 4', 25, 'https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146122/saree1_cfix1u.jpg?_s=public-apps')">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146712/saree2_z5m8gq.jpg?_s=public-apps" alt="Product 5">
+                <h3>Product 5</h3>
+                <p>Description of Product 5</p>
+                <p>Price: $30.00</p>
+                <button onclick="addToCart('Product 5', 30, 'https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146712/saree2_z5m8gq.jpg?_s=public-apps')">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722147302/saree3_izqz0u.jpg?_s=public-apps" alt="Product 6">
+                <h3>Product 6</h3>
+                <p>Description of Product 6</p>
+                <p>Price: $35.00</p>
+                <button onclick="addToCart('Product 6', 35, 'https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722147302/saree3_izqz0u.jpg?_s=public-apps')">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section" style="display:none;">
+        <h2>About Us</h2>
+        <p>This is the about section.</p>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" class="section" style="display:none;">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Artisan Women's E-commerce. All rights reserved.</p>
+        <p>© 2024 Artisan Women. All rights reserved.</p>
     </footer>
+
+    <script>
+        let cart = [];
+    
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    
+        function addToCart(productName, productPrice, productImage) {
+            cart.push({ name: productName, price: productPrice, image: productImage });
+            updateCartCount();
+        }
+    
+        function updateCartCount() {
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+    
+        function showCart() {
+            showSection('cart');
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price;
+            });
+    
+            const totalElement = document.getElementById('cart-total');
+            totalElement.innerHTML = `<h3>Grand Total: $${total.toFixed(2)}</h3>`;
+        }
+    
+        // Initialize cart count on page load
+        updateCartCount();
+    </script>
+    
 </body>
 </html>

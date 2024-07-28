@@ -1,10 +1,10 @@
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    
+
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const errorElement = document.getElementById('error');
-    
+
     const response = await fetch('/login', {
         method: 'POST',
         headers: {
@@ -12,9 +12,9 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         },
         body: JSON.stringify({ email, password })
     });
-    
+
     const result = await response.json();
-    
+
     if (response.status !== 200) {
         errorElement.textContent = 'Wrong credentials entered, please try again';
     } else {

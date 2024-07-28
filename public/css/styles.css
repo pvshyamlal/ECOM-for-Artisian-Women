@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Remove default margin */
+}
+
+.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Make navbar fixed */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #111;
+}
+
+.navbar .cart-icon {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.navbar .cart-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.navbar .cart-icon .badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.section {
+    padding: 20px;
+    margin: 20px;
+    padding-top: 60px; /* Add padding to avoid content hidden behind navbar */
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    flex: 1 1 calc(16.66% - 20px); /* Adjust width to fit six items per row */
+    box-sizing: border-box;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.02px 0; /* Minimal padding to keep the footer text visible */
+    line-height: 0.002; /* Adjust line height to make the footer thinner */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+}
