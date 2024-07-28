@@ -5,16 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artisan E-Commerce</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('main > section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');  // Show the home section by default
+        });
+    </script>
 </head>
 <body>
     <header>
         <h1>Artisan E-Commerce</h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('products')">Products</a></li>
+                <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -29,14 +42,14 @@
             <h2>Products</h2>
             <div class="product-list">
                 <div class="product">
-                    <img src="path/to/product1.jpg" alt="Product 1">
+                    <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/v1658239034/sample.jpg" alt="Product 1">
                     <h3>Product 1</h3>
                     <p>Description of Product 1</p>
                     <p>Price: $10.00</p>
                     <button>Add to Cart</button>
                 </div>
                 <div class="product">
-                    <img src="path/to/product2.jpg" alt="Product 2">
+                    <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/v1658239034/sample.jpg" alt="Product 2">
                     <h3>Product 2</h3>
                     <p>Description of Product 2</p>
                     <p>Price: $15.00</p>
