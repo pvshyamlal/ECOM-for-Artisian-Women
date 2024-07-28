@@ -1,18 +1,27 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0; /* Remove default margin */
+    transition: margin-left 0.5s;
+}
+
+body.nav-open {
+    margin-left: 250px; /* Add margin to body when nav is open */
 }
 
 .navbar {
     list-style-type: none;
-    padding: 0;
+    padding: 10;
     margin: 0;
     overflow: hidden;
     background-color: #333;
     position: fixed; /* Make navbar fixed */
     top: 0;
+    right: 0;
     width: 100%;
     z-index: 1000; /* Ensure it stays on top */
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Align items vertically */
 }
 
 .navbar li {
@@ -23,7 +32,7 @@ body {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 16px;
     text-decoration: none;
 }
 
@@ -33,14 +42,14 @@ body {
 
 .navbar .cart-icon {
     position: relative;
-    float: right;
     margin-right: 10px;
     cursor: pointer;
+    margin-top: 10px; /* Add margin-top to move the cart icon down */
 }
 
 .navbar .cart-icon img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
 }
 
 .navbar .cart-icon .badge {
@@ -50,14 +59,60 @@ body {
     padding: 2px 8px;
     font-size: 12px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -10px;
+    right: -10px;
+}
+
+#nav-logo {
+    font-size: 20px; /* Decrease font size */
+    cursor: pointer;
+    position: fixed;
+    top: 1px; /* Adjust top position */
+    left: 15px; /* Adjust left position */
+    z-index: 1001; /* Ensure it stays on top */
+    color: white;
+    background-color: #333;
+    padding: 8px; /* Adjust padding */
+    border-radius: 5px;
+}
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-nav ul li {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav ul li:hover {
+    background-color: #575757;
 }
 
 .section {
     padding: 20px;
     margin: 20px;
     padding-top: 60px; /* Add padding to avoid content hidden behind navbar */
+    transition: margin-left 0.5s; /* Add transition for smooth content move */
 }
 
 .products-container {
@@ -98,8 +153,8 @@ footer {
 }
 
 .cart-item img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     margin-right: 10px;
 }
 

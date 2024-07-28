@@ -7,15 +7,25 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Navigation Logo -->
+    <div id="nav-logo" onclick="toggleNav()">☰</div>
+
+    <!-- Side Navigation Menu -->
+    <div id="side-nav" class="side-nav">
+        <ul>
+            <li><a href="#" onclick="showSection('home'); toggleNav()">Home</a></li>
+            <li><a href="#" onclick="showSection('products'); toggleNav()">Products</a></li>
+            <li><a href="#" onclick="showSection('about'); toggleNav()">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </div>
+
     <ul class="navbar">
-        <li><a href="#" onclick="showSection('home')">Home</a></li>
-        <li><a href="#" onclick="showSection('products')">Products</a></li>
-        <li><a href="#" onclick="showSection('about')">About Us</a></li>
-        <li class="cart-icon">
-            <a href="#" onclick="showCart()">
-                <img src="https://img.icons8.com/material-rounded/24/ffffff/shopping-cart.png" alt="Cart">
-                <span id="cart-count" class="badge">0</span>
-            </a>
+        <!-- Cart Icon -->
+        <li class="cart-icon" onclick="showCart()">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Cart">
+            <span class="badge" id="cart-count">0</span>
         </li>
     </ul>
 
@@ -30,7 +40,7 @@
         <h2>Our Products</h2>
         <div class="products-container">
             <div class="product">
-                <img src="https://res.cloudinary.com/dwwpovlcs/image/upload/fl_preserve_transparency/v1722146122/saree1_cfix1u.jpg?_s=public-apps" alt="Product 1">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Cart">
                 <h3>Product 1</h3>
                 <p>Description of Product 1</p>
                 <p>Price: $10.00</p>
@@ -92,52 +102,66 @@
     </footer>
 
     <script>
-        let cart = [];
-    
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-        }
-    
-        function addToCart(productName, productPrice, productImage) {
-            cart.push({ name: productName, price: productPrice, image: productImage });
-            updateCartCount();
-        }
-    
-        function updateCartCount() {
-            document.getElementById('cart-count').innerText = cart.length;
-        }
-    
-        function showCart() {
-            showSection('cart');
-            const cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-    
-            cart.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.classList.add('cart-item');
-                itemElement.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <h3>${item.name}</h3>
-                        <p>Price: $${item.price.toFixed(2)}</p>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(itemElement);
-                total += item.price;
-            });
-    
-            const totalElement = document.getElementById('cart-total');
-            totalElement.innerHTML = `<h3>Grand Total: $${total.toFixed(2)}</h3>`;
-        }
-    
-        // Initialize cart count on page load
+    let cart = [];
+
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function addToCart(productName, productPrice, productImage) {
+        cart.push({ name: productName, price: productPrice, image: productImage });
         updateCartCount();
-    </script>
+    }
+
+    function updateCartCount() {
+        document.getElementById('cart-count').innerText = cart.length;
+    }
+
+    function showCart() {
+        showSection('cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price.toFixed(2)}</p>
+                </div>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+            total += item.price;
+        });
+
+        const totalElement = document.getElementById('cart-total');
+        totalElement.innerHTML = `<h3>Grand Total: $${total.toFixed(2)}</h3>`;
+    }
+
+    // Initialize cart count on page load
+    updateCartCount();
+
+    // Function to toggle the side navigation menu
+    function toggleNav() {
+        const sideNav = document.getElementById('side-nav');
+        const mainContent = document.body;
+        if (sideNav.style.width === '250px') {
+            sideNav.style.width = '0';
+            mainContent.style.marginLeft = '0';
+        } else {
+            sideNav.style.width = '250px';
+            mainContent.style.marginLeft = '250px';
+        }
+    }
+</script>
+    
     
 </body>
 </html>
