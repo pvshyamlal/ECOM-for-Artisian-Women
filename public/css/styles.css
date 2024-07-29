@@ -8,6 +8,8 @@ body.nav-open {
     margin-left: 250px; /* Add margin to body when nav is open */
 }
 
+/* Other styles ... */
+
 .navbar {
     list-style-type: none;
     padding: 10;
@@ -83,10 +85,32 @@ body.nav-open {
     z-index: 1000;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #111; /* black color*/
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure items are spaced between */
+}
+
+.logout-container {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.side-nav .logout-btn {
+    background-color: #111;  
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .side-nav ul {
@@ -105,7 +129,11 @@ body.nav-open {
 }
 
 .side-nav ul li:hover {
-    background-color: #575757;
+    background-color: #cc3737;  /* Add hover effect for home, shop */
+}
+
+.side-nav .logout-btn:hover {
+    background-color: #111;
 }
 
 .section {
@@ -116,8 +144,8 @@ body.nav-open {
 }
 
 .products-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* Create a grid with 6 columns */
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -125,6 +153,8 @@ body.nav-open {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
+    flex: 1 1 calc(16.66% - 20px); /* Adjust width to fit six items per row */
+    box-sizing: border-box;
 }
 
 .product img {
