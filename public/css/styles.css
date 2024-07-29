@@ -116,8 +116,8 @@ body.nav-open {
 }
 
 .products-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Create a grid with 6 columns */
     gap: 20px;
 }
 
@@ -125,8 +125,6 @@ body.nav-open {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
-    flex: 1 1 calc(16.66% - 20px); /* Adjust width to fit six items per row */
-    box-sizing: border-box;
 }
 
 .product img {
