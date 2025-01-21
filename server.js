@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 const MONGO_URI = 'mongodb+srv://aksharapraturi:akshu123@cluster0.inwjj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const SECRET_KEY = 'your_secret_key';
 
